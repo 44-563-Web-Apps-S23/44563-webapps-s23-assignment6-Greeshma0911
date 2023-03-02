@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>conversion.html page</title>
+    </head>
+    
+    <body>
+        <h2>Greeshma Jale shows currency conversions</h2>
+        <form>
+            <label for="form1_base">Enter base amount </label>
+            <input type ="number" id="form1_base" name="form1_base" value=50> <br>
+
+            <label for="form1_conversion">Enter the conversion rate</label>
+            <input type ="number" id="form1_conversion" name="form1_conversion" value="35"> <br>
+
+            <input type="button" onclick="convert()" value="Show Conversions">
+        </form>
+
+        <p id="result">Result is replaced</p>
+
+        <script> 
+            function convert (){
+                base_amount = document.getElementById("form1_base").value;
+                conversion_rate = document.getElementById("form1_conversion").value;
+                let toShow = "";
+                for (let i = 1; i <= 5; i++) {
+                    value = base_amount * Math.pow(2, i-1);
+                    convertedValue = value * conversion_rate;
+                    toShow += value + " is " + Math.round(convertedValue * 100)/100 + "; "
+                }
+                document.getElementById("result").innerHTML = "Conversions are: " + toShow;
+            }
+        </script>
+    </body>
+</html> 
