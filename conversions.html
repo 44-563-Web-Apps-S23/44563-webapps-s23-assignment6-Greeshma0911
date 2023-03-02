@@ -18,6 +18,20 @@
 
         <p id="result">Result is replaced</p>
 
+
+        <form>
+            <input type="radio" id="average" name="calculations" onclick="chooseOp()" value="mean" checked >
+            <label for="average">average</label></br>
+        
+            <input type="radio" id="max" name="calculations" onclick="chooseOp()" value="maximum">
+            <label for="max">max</label></br>
+        
+            <input type="radio" id="min" name="calculations" onclick="chooseOp()" value="minimum">
+            <label for="min">min</label></br>
+        </form>
+
+        <p id="result1"> Result will display</p>
+
         <script> 
             function convert (){
                 base_amount = document.getElementById("form1_base").value;
@@ -29,6 +43,22 @@
                     toShow += value + " is " + Math.round(convertedValue * 100)/100 + "; "
                 }
                 document.getElementById("result").innerHTML = "Conversions are: " + toShow;
+            }
+
+            function chooseOp() {
+                const base = parseFloat(document.getElementById("form1_base").value);
+                const conversion = parseFloat(document.getElementById("form1_conversion").value);
+                let result;
+                if (document.getElementById("average").checked) {
+                    result = (base + conversion) / 2;
+                    document.getElementById("result1").innerHTML = "The average of " + base + " and " + conversion + " is " + result + "; "
+                } else if (document.getElementById("max").checked) {
+                    result = Math.max(base, conversion);
+                    document.getElementById("result1").innerHTML = "The maximum of " + base + " and " + conversion + " is " + result + "; "
+                } else if (document.getElementById("min").checked) {
+                    result = Math.min(base, conversion);
+                    document.getElementById("result1").innerHTML = "The minimum of " + base + " and " + conversion + " is " + result + "; "
+                }
             }
         </script>
     </body>
